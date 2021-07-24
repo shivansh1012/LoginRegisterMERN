@@ -1,21 +1,19 @@
 import React, { useContext } from "react";
-import { BrowserRouter, Switch, Route, useRouteMatch } from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 
 //authorization
-import AuthContext from "../context/AuthContext";
+import AuthContext from "./AdminAuthContext";
 
 //import components
-import Navbar from "../Components/AdminComponents/layout/Navbar";
-import Register from '../Components/AdminComponents/auth/Register';
-import Login from '../Components/AdminComponents/auth/Login';
-import UserPage from "../Components/AdminComponents/layout/UserPage";
+import Register from './auth/Register.js';
+import Login from './auth/Login.js';
+import UserPage from "./layout/UserPage.js";
 
 export default function Router() {
     const { loggedIn } = useContext(AuthContext);
     const { path } = useRouteMatch();
     return (
         <>
-            <Navbar />
             <Switch>
                 {loggedIn === true && (
                     <>

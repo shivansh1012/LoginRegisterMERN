@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import {apiBaseURL} from "../../../../Config";
+import {apiBaseURL} from "../../../Config";
 
 export default function UserForm({ getUsers }) {
     const [email, setEmail] = useState("");

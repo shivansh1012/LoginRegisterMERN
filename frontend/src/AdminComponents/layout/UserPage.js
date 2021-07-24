@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import UserForm from './HomeLayout/UserForm';
 import UserList from './HomeLayout/UserList';
-import {apiBaseURL} from "../../../Config";
+import {apiBaseURL} from "../../Config";
 
 
 export default function UserPage() {
