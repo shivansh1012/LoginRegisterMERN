@@ -17,8 +17,8 @@ app.use(cors({
 }));
 
 //Links
-app.use("/api/v1/admin/", require("./AdminService/admin.router.js"));
-app.use("/api/v1/user/", require("./UserService/user.router.js"));
+app.use("/api/v1/admin", require("./AdminService/admin.router.js"));
+app.use("/api/v1/user", require("./UserService/user.router.js"));
 app.use("*", (req, res) => res.status(404).json({ error: "not found"}));
 
 module.exports = app;

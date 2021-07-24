@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 import SignIn from "./auth/SignIn";
 
+//authorization
+import UserAuthContext from "./UserAuthContext";
+
 export default function UserRouter() {
+    const { userLoggedIn } = useContext(UserAuthContext);
     const { path } = useRouteMatch();
     return (
         <Switch>
-            <Route exact path={`${path}`}>
-                <div>{path}</div>
-            </Route>
-            <Route path={`${path}signin`} component={SignIn} />
+            {userLoggedIn === true && (
+                <>
+                    <Route path={`${path}`} >
+                        <div>Home</div>
+                    </Route>
+                </>
+            )}
+            {userLoggedIn === false && (
+                <>
+                    <Route path={`${path}`} component={SignIn} />
+                </>
+            )}
         </Switch>
     )
 }

@@ -2,26 +2,26 @@ import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import { apiBaseURL } from "../Config";
 
-const AuthContext = createContext();
+const AdminAuthContext = createContext();
 
-function AuthContextProvider(props) {
-  const [loggedIn, setLoggedIn] = useState(undefined);
+function AdminAuthContextProvider(props) {
+  const [adminLoggedIn, setAdminLoggedIn] = useState(undefined);
 
-  async function getLoggedIn() {
-    const loggedInRes = await axios.get(`${apiBaseURL}/auth/loggedIn`);
-    setLoggedIn(loggedInRes.data);
+  async function getAdminLoggedIn() {
+    const loggedInRes = await axios.get(`${apiBaseURL}/admin/loggedIn`);
+    setAdminLoggedIn(loggedInRes.data);
   }
 
   useEffect(() => {
-    getLoggedIn();
+    getAdminLoggedIn();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ loggedIn, getLoggedIn }}>
+    <AdminAuthContext.Provider value={{ adminLoggedIn, getAdminLoggedIn }}>
       {props.children}
-    </AuthContext.Provider>
+    </AdminAuthContext.Provider>
   );
 }
 
-export default AuthContext;
-export { AuthContextProvider };
+export default AdminAuthContext;
+export { AdminAuthContextProvider };

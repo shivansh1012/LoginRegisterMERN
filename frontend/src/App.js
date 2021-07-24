@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
-import { AuthContextProvider } from "./AdminComponents/AdminAuthContext";
+import { AdminAuthContextProvider } from "./AdminComponents/AdminAuthContext";
+import { UserAuthContextProvider } from "./UserComponents/UserAuthContext"
 
 import AdminRouter from "./AdminComponents/AdminRouter.js";
 import UserRouter from "./UserComponents/UserRouter.js";
@@ -13,13 +14,15 @@ export default function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="">
-          <UserRouter />
+        <Route exact path="/user">
+          <UserAuthContextProvider>
+            <UserRouter />
+          </UserAuthContextProvider>
         </Route>
         <Route path="/admin">
-          <AuthContextProvider>
+          <AdminAuthContextProvider>
             <AdminRouter />
-          </AuthContextProvider>
+          </AdminAuthContextProvider>
         </Route>
       </Switch>
     </BrowserRouter>

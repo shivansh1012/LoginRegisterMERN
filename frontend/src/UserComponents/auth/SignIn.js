@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-// import axios from 'axios';
-// import { apiBaseURL } from '../../Config';
+import React, { useContext, useState } from 'react';
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
+import UserAuthContext from "../UserAuthContext";
+import { apiBaseURL } from '../../Config';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -38,6 +40,9 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { getUserLoggedIn } = useContext(UserAuthContext);
+    const history = useHistory();
+
   async function login(e) {
     e.preventDefault();
     try {
@@ -46,10 +51,10 @@ export default function SignIn() {
         password
       }
 
-      // await axios.post(`${apiBaseURL}/auth/login`, loginData);
+      await axios.post(`${apiBaseURL}/user/login`, loginData);
       console.log(loginData)
-      // await getLoggedIn();
-      // history.push("/c/");
+      await getUserLoggedIn();
+      history.push("/user/");
     } catch (e) {
       console.error(e);
     }
@@ -65,7 +70,7 @@ export default function SignIn() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          USER Sign in
         </Typography>
         <form className={classes.form} onSubmit={login}>
           <TextField

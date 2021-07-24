@@ -1,18 +1,18 @@
 import axios from "axios";
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import AuthContext from "../../../context/AuthContext";
-import { apiBaseURL } from "../../../Config";
+import AdminAuthContext from "../AdminAuthContext"
+import { apiBaseURL } from "../../Config";
 
 
 function LogOutBtn() {
-  const { getLoggedIn } = useContext(AuthContext);
+  const { getAdminLoggedIn } = useContext(AdminAuthContext);
 
   const history = useHistory();
 
   async function logOut() {
-    await axios.get(`${apiBaseURL}/auth/logout`);
-    await getLoggedIn();
+    await axios.get(`${apiBaseURL}/admin/logout`);
+    await getAdminLoggedIn();
     history.push("/admin/");
   }
 

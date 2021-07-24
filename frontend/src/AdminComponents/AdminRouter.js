@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 
 //authorization
-import AuthContext from "./AdminAuthContext";
+import AdminAuthContext from "./AdminAuthContext";
 
 //import components
 import Register from './auth/Register.js';
@@ -10,19 +10,19 @@ import Login from './auth/Login.js';
 import UserPage from "./layout/UserPage.js";
 
 export default function Router() {
-    const { loggedIn } = useContext(AuthContext);
+    const { adminLoggedIn } = useContext(AdminAuthContext);
     const { path } = useRouteMatch();
     return (
         <>
             <Switch>
-                {loggedIn === true && (
+                {adminLoggedIn === true && (
                     <>
                         <Route path={`${path}`}>
                             <UserPage />
                         </Route>
                     </>
                 )}
-                {loggedIn === false && (
+                {adminLoggedIn === false && (
                     <>
                         <Route exact path={`${path}`}>
                             <Login />

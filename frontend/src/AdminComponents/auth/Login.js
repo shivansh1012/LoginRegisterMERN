@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import AuthContext from "../AdminAuthContext";
+import AdminAuthContext from "../AdminAuthContext";
 import { apiBaseURL } from "../../Config";
 
 import Avatar from '@material-ui/core/Avatar';
@@ -41,7 +41,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const { getLoggedIn } = useContext(AuthContext);
+    const { getAdminLoggedIn } = useContext(AdminAuthContext);
     const history = useHistory();
 
     async function login(e) {
@@ -52,8 +52,8 @@ export default function Login() {
                 password
             }
 
-            await axios.post(`${apiBaseURL}/auth/login`, loginData);
-            await getLoggedIn();
+            await axios.post(`${apiBaseURL}/admin/login`, loginData);
+            await getAdminLoggedIn();
             history.push("/admin/");
         } catch (e) {
             console.error(e);
@@ -68,7 +68,7 @@ export default function Login() {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    ADMIN Sign in
                 </Typography>
                 <form className={classes.form} onSubmit={login}>
                     <TextField

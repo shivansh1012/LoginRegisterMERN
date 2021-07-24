@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import AuthContext from "../AdminAuthContext";
+import AdminAuthContext from "../AdminAuthContext";
 import { apiBaseURL } from "../../Config";
 
 import Avatar from '@material-ui/core/Avatar';
@@ -42,7 +42,7 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [passwordVerify, setPasswordVerify] = useState("");
 
-    const { getLoggedIn } = useContext(AuthContext);
+    const { getAdminLoggedIn } = useContext(AdminAuthContext);
     const history = useHistory();
 
     async function register(e) {
@@ -53,9 +53,9 @@ export default function Register() {
                 password
             }
 
-            await axios.post(`${apiBaseURL}/auth/register`, registerData);
+            await axios.post(`${apiBaseURL}/admin/register`, registerData);
 
-            await getLoggedIn();
+            await getAdminLoggedIn();
             history.push("/");
         } catch (e) {
             console.error(e);

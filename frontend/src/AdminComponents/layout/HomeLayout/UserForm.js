@@ -14,7 +14,7 @@ export default function UserForm({ getUsers }) {
             email: email,
             password: password,
           };
-          await axios.post(`${apiBaseURL}/auth/register/user`, userData);
+          await axios.post(`${apiBaseURL}/admin/register/user`, userData);
           getUsers();
           setEmail("")
           setPassword("")
