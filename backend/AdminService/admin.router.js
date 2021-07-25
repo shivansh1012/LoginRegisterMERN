@@ -53,11 +53,17 @@ router.post("/register/user", auth, async (req, res) => {
         const adminInfo = req.adminInfo;
 
         const existingAdmin = await Admin.findOne({ email: adminInfo.email });
-        existingAdmin.userInfo.push(email)
+
+        const id = existingAdmin.userCount + 1
+
+        existingAdmin.userInfo.push({id, email})
+
         const newUserDetail = {
-            count: existingAdmin.userCount + 1,
+            count: id,
             users: existingAdmin.userInfo
         }
+
+        // console.log(newUserDetail)
 
         //password hashing
         const salt = await bcrypt.genSalt();

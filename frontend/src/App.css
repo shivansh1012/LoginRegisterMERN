@@ -7,3 +7,24 @@
     text-decoration: none;
     color: inherit;
 }
+.flex {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .flex-item + .flex-item {
+    margin-left: 10px;
+  }
+  
+  .button {
+    margin-top: 15px;
+    background-color: #0066FF;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
