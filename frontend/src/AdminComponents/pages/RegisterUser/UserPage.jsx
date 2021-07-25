@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import UserForm from './HomeLayout/UserForm';
-import UserList from './HomeLayout/UserList';
-import {apiBaseURL} from "../../Config";
-
+import UserForm from './UserForm';
+import UserList from './UserList';
+import {apiBaseURL} from "../../../Config";
+import "./userPage.css";
 
 export default function UserPage() {
     const [users, setUsers] = useState([]);
@@ -16,7 +16,7 @@ export default function UserPage() {
         getUsers();
       }, []);
     return (
-        <div>
+        <div className="user">
             <UserForm getUsers={getUsers}/>
             <UserList users={users}/>
         </div>

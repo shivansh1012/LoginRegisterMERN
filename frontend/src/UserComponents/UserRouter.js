@@ -1,20 +1,29 @@
 import React, { useContext } from "react";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
+import { Route, useRouteMatch } from "react-router-dom";
+import "../App.css";
+
 import SignIn from "./auth/SignIn";
 
 //authorization
 import UserAuthContext from "./UserAuthContext";
 
+import Sidebar from "./layout/Sidebar/Sidebar.jsx";
+import Topbar from "./layout/Topbar/Topbar.jsx";
+
+import LoggedInRouter from "./LoggedInRouter";
+
 export default function UserRouter() {
     const { userLoggedIn } = useContext(UserAuthContext);
     const { path } = useRouteMatch();
     return (
-        <Switch>
+        <>
             {userLoggedIn === true && (
                 <>
-                    <Route path={`${path}`} >
-                        <div>Home</div>
-                    </Route>
+                    <Topbar />
+                    <div className="container">
+                        <Sidebar />
+                        <LoggedInRouter />
+                    </div>
                 </>
             )}
             {userLoggedIn === false && (
@@ -22,6 +31,6 @@ export default function UserRouter() {
                     <Route path={`${path}`} component={SignIn} />
                 </>
             )}
-        </Switch>
+        </>
     )
 }

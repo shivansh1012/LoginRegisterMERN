@@ -56,7 +56,7 @@ export default function Register() {
             await axios.post(`${apiBaseURL}/admin/register`, registerData);
 
             await getAdminLoggedIn();
-            history.push("/");
+            history.push("/admin");
         } catch (e) {
             console.error(e);
         }
@@ -109,7 +109,7 @@ export default function Register() {
                                 name="password"
                                 label="Re-enter Password"
                                 type="password"
-                                id="password"
+                                id="repassword"
                                 autoComplete="current-password"
                                 value={passwordVerify}
                                 onChange={(e) => {setPasswordVerify(e.target.value)}}

@@ -52,9 +52,9 @@ export default function SignIn() {
       }
 
       await axios.post(`${apiBaseURL}/user/login`, loginData);
-      console.log(loginData)
+      // console.log(loginData)
       await getUserLoggedIn();
-      history.push("/user/");
+      history.push("/user");
     } catch (e) {
       console.error(e);
     }

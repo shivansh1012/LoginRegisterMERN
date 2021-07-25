@@ -54,7 +54,7 @@ export default function Login() {
 
             await axios.post(`${apiBaseURL}/admin/login`, loginData);
             await getAdminLoggedIn();
-            history.push("/admin/");
+            history.push("/admin");
         } catch (e) {
             console.error(e);
         }
