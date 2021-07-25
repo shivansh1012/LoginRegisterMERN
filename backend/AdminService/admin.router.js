@@ -7,6 +7,7 @@ const auth = require("./Middlewares/auth.js");
 
 router.post("/register", async (req, res) => {
     try {
+        console.log(req.originalUrl)
         const { email, password } = req.body;
 
         if (!email || !password)
@@ -47,6 +48,7 @@ router.post("/register", async (req, res) => {
 
 router.post("/register/user", auth, async (req, res) => {
     try {
+        console.log(req.originalUrl)
         const { email, password } = req.body;
         const adminInfo = req.adminInfo;
 
@@ -80,6 +82,7 @@ router.post("/register/user", auth, async (req, res) => {
 
 router.post("/login", async (req, res) => {
     try {
+        console.log(req.originalUrl)
         const { email, password } = req.body;
 
         if (!email || !password)
@@ -103,7 +106,7 @@ router.post("/login", async (req, res) => {
         res.cookie("AdminToken", token, {
             httpOnly: true
         }).send();
-
+        //console.log(token)
     } catch (e) {
         console.error(e);
         res.status(500).send();
@@ -112,6 +115,7 @@ router.post("/login", async (req, res) => {
 
 router.get("/userList", auth, async (req, res) => {
     try {
+        console.log(req.originalUrl)
         const adminInfo = req.adminInfo;
         const admin = await Admin.findOne({ email: adminInfo.email });
         // console.log(adminInfo)
@@ -124,6 +128,7 @@ router.get("/userList", auth, async (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
+    console.log(req.originalUrl)
     res.cookie("AdminToken", "", {
         httpOnly: true,
         expires: new Date(0)
@@ -131,6 +136,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/loggedIn", (req, res) => {
+    console.log(req.originalUrl)
     try {
         const token = req.cookies.AdminToken;
         if (!token) return res.json(false);
