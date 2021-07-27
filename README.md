@@ -7,7 +7,7 @@ A portal for user and admin login/register.
 ### Installing
 
 * After cloning the repository run command "npm i" in backend and frontend folders.
-* Two files : config.js and .env have not be uploaded which contains the senstive infos. If required message me on LinkedIn(link in bio).
+* Two files : config.js and .env have not be uploaded which contains the senstive infos. If required message me [@Shivansh1012](https://www.linkedin.com/in/shivansh1012/)
 
 ### Executing program
 
