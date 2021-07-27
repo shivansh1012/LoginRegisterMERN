@@ -17,7 +17,7 @@ A portal for user and admin login/register.
 ```
 npm run dev
 ```
-* To start React/JS, Go to frontend dir and execute
+* To start ReactJS, Go to frontend dir and execute
 ```
 npm start
 ```
