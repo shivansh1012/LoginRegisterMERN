@@ -1,6 +1,6 @@
 # MERNPortal
 
-A basic portal for user and admin login/register.
+A basic portal for user and admin login/register using JWT Authentication.
 
 ## Getting Started
 
@@ -9,7 +9,7 @@ A basic portal for user and admin login/register.
 * After cloning the repository run command "npm i" in backend and frontend folders.
 * In ./backend/ create a .env file and define 
   ```
-  MERN_DB_URI=mongodb://localhost:27017/FormsDB
+  MERN_DB_URI=mongodb://localhost:27017/Try2Portal
   
   JWT_SECRET=SomeKeyForSecurity
   ```
