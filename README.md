@@ -11,9 +11,12 @@ A basic portal for user and admin login/register.
   ```
   MERN_DB_URI=mongodb://localhost:27017/FormsDB
   
-  PORT = 5000
-  
-  FORM_NS=FormSubmission
+  JWT_SECRET=SomeKeyForSecurity
+  ```
+* In ./frontend/src/ create a config.js file and define 
+  ```
+  export const apiBaseURL = "http://localhost:5000/api/v1";
+  ```
 
 
 ### Executing program
